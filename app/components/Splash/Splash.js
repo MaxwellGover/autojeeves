@@ -3,6 +3,9 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { Button } from 'react-native-elements'
 
 export default function Splash (props) {
+	Splash.propTypes = {
+		changeScene: PropTypes.func.isRequired
+	}
 	return (
 		<Image 
 			style={styles.container}
@@ -20,6 +23,7 @@ export default function Splash (props) {
 					title='CONTINUE' 
 					buttonStyle={{marginBottom: 30, backgroundColor: '#e74c3c', width: 380}}
 					large
+					onPress={props.changeScene}
 				/>	
 			</View>
 		</Image>

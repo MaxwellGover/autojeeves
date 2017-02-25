@@ -1,0 +1,1 @@
+export { default as data } from './modules/data'
