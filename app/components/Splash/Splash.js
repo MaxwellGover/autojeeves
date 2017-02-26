@@ -9,7 +9,7 @@ export default function Splash (props) {
 	return (
 		<Image 
 			style={styles.container}
-			source={require('../../images/backgroundImage.png')}
+			source={require('../../images/splash.jpg')}
 		>
 			<View style={styles.imageContainer}>
 				<Image
@@ -42,11 +42,12 @@ const styles = StyleSheet.create({
 	},
 	imageContainer: {
 		flex: 1,
-		justifyContent: 'center'
+		marginTop: 50,
+		justifyContent: 'flex-start'
 	},
 	image: {
 		resizeMode: 'contain',
-		height: 250
+		height: 150
 	},
 	buttonContainer: {
 		flex: 1,

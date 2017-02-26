@@ -1,11 +1,12 @@
 import React, { PropTypes, Component } from 'react'
 import { View, Text, Navigator } from 'react-native'
-import { SplashContainer, MakeContainer } from '~/containers'
+import { SplashContainer } from '~/containers'
+import { Make } from '~/components'
 
 export default class AppNavigator extends Component {
 	renderScene = (route, navigator) => {
 		if (route.make === true) {
-			return <MakeContainer navigator={navigator}/>
+			return <Make navigator={navigator}/>
 		}
 		return <SplashContainer navigator={navigator} />
 	}
