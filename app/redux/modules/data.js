@@ -1,9 +1,13 @@
 const STORE_MAKE_DATA = 'STORE_MAKE_DATA'
 const STORE_USER_CAR = 'STORE_USER_CAR'
+const STORE_USER_MODEL = 'STORE_USER_MODEL'
+const STORE_USER_YEAR = 'STORE_USER_YEAR'
 
 const initialState = {
 	makeData: [],
-	userCar: {}
+	userCarMake: {},
+	userCarModel: {},
+	userCarYear: {}
 }
 
 export function storeMakeData (data) {
@@ -17,6 +21,20 @@ export function storeUserCar (car) {
 	return {
 		type: STORE_USER_CAR,
 		car
+	}
+}
+
+export function storeUserModel (model) {
+	return {
+		type: STORE_USER_MODEL,
+		model
+	}
+}
+
+export function storeUserYear (year) {
+	return {
+		type: STORE_USER_YEAR,
+		year
 	}
 }
 
@@ -43,7 +61,17 @@ export default function data (state = initialState, action) {
 		case STORE_USER_CAR : 
 			return {
 				...state,
-				userCar: action.car
+				userCarMake: action.car
+			}
+		case STORE_USER_MODEL : 
+			return {
+				...state,
+				userCarModel: action.model
+			}
+		case STORE_USER_YEAR : 
+			return {
+				...state,
+				userCarYear: action.year
 			}
 		default : 
 			return state

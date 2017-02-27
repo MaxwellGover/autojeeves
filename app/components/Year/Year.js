@@ -3,67 +3,63 @@ import { View, Text, ListView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { List, ListItem } from 'react-native-elements'
 import NavigationBar from 'react-native-navbar'
-import { storeUserCar } from '~/redux/modules/data'
+import { storeUserYear } from '~/redux/modules/data'
 
 /*
 const list = [
   {
   	id: 1,
-    name: 'Audi'
+    name: 'Audi',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President'
   },
   {
   	id: 2,
-    name: 'Buick'
+    name: 'Buick',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman'
   }
 ];
 */
 
-class Make extends Component {
+class Year extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
-		navigator: PropTypes.object.isRequired,
-		makeData: PropTypes.array.isRequired
+		userCarModel: PropTypes.object.isRequired
 	}
 	constructor (props) {
 		super(props)
 		this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2 })
 		this.state = {
-			dataSource: this.ds.cloneWithRows(this.props.makeData)
+			dataSource: this.ds.cloneWithRows(this.props.userCarModel.years)
 		}
 	}
-	renderRow = (car) => { 
+	renderRow = (year) => { 
 		return (
 			<ListItem 
-				key={car.id} 
-				title={car.name} 
-				onPress={() => {
-					this.props.dispatch(storeUserCar(car)); 
-					this.props.navigator.push({
-						model: true
-					});
-					}
-				}
-				underlayColor='#eceeef' 
-			/>
+				key={year.id} 
+				title={year.year} 
+				onPress={() => this.props.dispatch(storeUserYear(year))}
+				underlayColor='#eceeef'/>
 		) 
 	}
 	render () {
-		console.log(this.props.makeData)
+		console.log(this.props.userCarModel)
 		return (
 			<View style={{flex: 1}}>
 				<NavigationBar 
-					title={{title: 'Make'}}
+					title={{title: 'Year'}}
 					tintColor='#fff'
 					style={{borderColor: '#e80d2d'}}
 				/>
 				<View style={styles.helpTextContainer}>
 					<Text style={{marginLeft: 10}}>
-						Select the make of your vehicle
+						Select the year of your vehicle
 					</Text>
 				</View>
 				<List containerStyle={{flex: 1, marginTop: 0}}>
 					<ListView 
-						renderRow={car => this.renderRow(car)}
+						renderRow={model => this.renderRow(model)}
 						dataSource={this.state.dataSource}
 					/>
 				</List>
@@ -74,11 +70,11 @@ class Make extends Component {
 
 function mapStateToProps ({data}) {
 	return {
-		makeData: data.makeData
+		userCarModel: data.userCarModel
 	}
 }
 
-export default connect(mapStateToProps)(Make)
+export default connect(mapStateToProps)(Year)
 
 const styles = StyleSheet.create({
 	helpTextContainer: {
