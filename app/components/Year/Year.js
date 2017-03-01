@@ -3,28 +3,12 @@ import { View, Text, ListView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { List, ListItem } from 'react-native-elements'
 import NavigationBar from 'react-native-navbar'
-import { storeUserYear } from '~/redux/modules/data'
-
-/*
-const list = [
-  {
-  	id: 1,
-    name: 'Audi',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-    subtitle: 'Vice President'
-  },
-  {
-  	id: 2,
-    name: 'Buick',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Vice Chairman'
-  }
-];
-*/
+import { storeUserYear, getSchedule } from '~/redux/modules/data'
 
 class Year extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
+		navigator: PropTypes.object.isRequired,
 		userCarModel: PropTypes.object.isRequired
 	}
 	constructor (props) {
@@ -36,11 +20,17 @@ class Year extends Component {
 	}
 	renderRow = (year) => { 
 		return (
-			<ListItem 
+			<Text
 				key={year.id} 
-				title={year.year} 
-				onPress={() => this.props.dispatch(storeUserYear(year))}
-				underlayColor='#eceeef'/>
+				onPress={() => {
+						this.props.dispatch(storeUserYear(year))
+						this.props.dispatch(getSchedule(year.id))
+						this.props.navigator.push({
+							myCar: true
+						})
+					}
+				}
+			>{year.year}</Text>
 		) 
 	}
 	render () {

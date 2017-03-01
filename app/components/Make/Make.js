@@ -40,7 +40,7 @@ class Make extends Component {
 					this.props.dispatch(storeUserCar(car)); 
 					this.props.navigator.push({
 						model: true
-					});
+					})
 					}
 				}
 				underlayColor='#eceeef' 

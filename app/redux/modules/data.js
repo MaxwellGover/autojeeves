@@ -2,12 +2,14 @@ const STORE_MAKE_DATA = 'STORE_MAKE_DATA'
 const STORE_USER_CAR = 'STORE_USER_CAR'
 const STORE_USER_MODEL = 'STORE_USER_MODEL'
 const STORE_USER_YEAR = 'STORE_USER_YEAR'
+const STORE_SCHEDULE = 'STORE_SCHEDULE'
 
 const initialState = {
 	makeData: [],
 	userCarMake: {},
 	userCarModel: {},
-	userCarYear: {}
+	userCarYear: {},
+	schedule: []
 }
 
 export function storeMakeData (data) {
@@ -38,6 +40,13 @@ export function storeUserYear (year) {
 	}
 }
 
+export function storeSchedule (schedule) {
+	return {
+		type: STORE_SCHEDULE,
+		schedule
+	}
+}
+
 export function getMakeData () {
 	return function (dispatch, getState) {
 		console.log('Getting data...')
@@ -48,6 +57,18 @@ export function getMakeData () {
   			.catch((error) => {
         		console.error(error);
       		});
+	}
+}
+
+export function getSchedule (id) {
+	return function (dispatch, getState) {
+		console.log(id)
+		console.log('Getting schedule...')
+		const endpoint = `https://api.edmunds.com/v1/api/maintenance/actionrepository/findbymodelyearid?modelyearid=${id}&fmt=json&api_key=rxmjqw6pxtyfh86ysq9g7a78`
+		fetch(endpoint)
+			.then(response => response.json())
+			.then(data => dispatch(storeSchedule(data.actionHolder)))
+			.catch((error) => console.log(error))
 	}
 }
 
@@ -72,6 +93,11 @@ export default function data (state = initialState, action) {
 			return {
 				...state,
 				userCarYear: action.year
+			}
+		case STORE_SCHEDULE : 
+			return {
+				...state,
+				schedule: action.schedule
 			}
 		default : 
 			return state

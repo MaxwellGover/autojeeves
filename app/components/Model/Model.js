@@ -5,23 +5,6 @@ import { List, ListItem } from 'react-native-elements'
 import NavigationBar from 'react-native-navbar'
 import { storeUserModel } from '~/redux/modules/data'
 
-/*
-const list = [
-  {
-  	id: 1,
-    name: 'Audi',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-    subtitle: 'Vice President'
-  },
-  {
-  	id: 2,
-    name: 'Buick',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Vice Chairman'
-  }
-];
-*/
-
 class Model extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
