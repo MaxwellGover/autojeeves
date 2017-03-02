@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text, ListView, StyleSheet } from 'react-native'
+import { View, Text, ListView, StyleSheet, Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { List, Card } from 'react-native-elements'
 import NavigationBar from 'react-native-navbar'
@@ -18,6 +18,23 @@ class Month extends Component {
 			dataSource: this.ds.cloneWithRows(this.props.schedule)
 		}
 	}
+	chooseNewCar = () => {
+		this.props.dispatch(clearData())
+		this.props.navigator.push({
+			make: true
+		})
+	}
+	showAlert = () => {
+		Alert.alert(
+			'Select a new car',
+			'Would you like to view the maintenance schedule for a different vehicle?',
+			[
+				{text: 'No', onPress: () => console.log('Cancel Pressed')},
+				{text: 'Yes', onPress: () => this.chooseNewCar()}
+			]
+
+		)
+	}
 	renderRow = (item) => {
 		return (
 			<Card>
@@ -27,7 +44,7 @@ class Month extends Component {
 		) 
 	}
 	render () {
-		console.table(this.props.schedule)
+		console.table(this.props.navigator)
 		return (
 			<View style={{flex: 1}}>
 				<NavigationBar 
@@ -37,12 +54,7 @@ class Month extends Component {
 						{
 							title: 'Edit', 
 							tintColor: '#ff1148',
-							handler: () => {
-								this.props.dispatch(clearData())
-								this.props.navigator.push({
-									make: true
-								})
-							}
+							handler: this.showAlert
 						}
 					}
 					style={{borderColor: '#e80d2d'}}

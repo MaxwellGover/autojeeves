@@ -16,15 +16,15 @@ export default function FooterTabs (props) {
 				onPress={() => props.onTabSelect('mileage')}
 				renderIcon={() => <Icon containerStyle={{justifyContent: 'center', alignItems: 'center', marginTop: 12}} type='ionicon' name='ios-car-outline' size={35}/>}
 				selected={props.activeFooterTab === 'mileage'}
-				renderSelectedIcon={() => <Icon containerStyle={{justifyContent: 'center', alignItems: 'center', marginTop: 12}} color={'#6296f9'} type='ionicon' name='ios-car-outline' size={35} />}>
-				<Mileage navigator={navigator}/>
+				renderSelectedIcon={() => <Icon containerStyle={{justifyContent: 'center', alignItems: 'center', marginTop: 12}} color={'#ff1148'} type='ionicon' name='ios-car-outline' size={35} />}>
+				<Mileage navigator={props.navigator}/>
 			</Tab>
 			<Tab
 				onPress={() => props.onTabSelect('months')}
 				renderIcon={() => <Icon containerStyle={{justifyContent: 'center', alignItems: 'center', marginTop: 12}} type='ionicon' name='ios-calendar-outline' size={35}/>}
 				selected={props.activeFooterTab === 'months'}
-				renderSelectedIcon={() => <Icon containerStyle={{justifyContent: 'center', alignItems: 'center', marginTop: 12}} color={'#6296f9'} type='ionicon' name='ios-calendar-outline' size={35} />}>
-				<Month navigator={navigator}/>
+				renderSelectedIcon={() => <Icon containerStyle={{justifyContent: 'center', alignItems: 'center', marginTop: 12}} color={'#ff1148'} type='ionicon' name='ios-calendar-outline' size={35} />}>
+				<Month navigator={props.navigator}/>
 			</Tab>
 		</Tabs>
 	)

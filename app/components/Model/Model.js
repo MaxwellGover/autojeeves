@@ -35,14 +35,12 @@ class Model extends Component {
 		) 
 	}
 	render () {
-		console.log(this.props.userCarMake)
 		return (
 			<View style={{flex: 1}}>
 				<NavigationBar 
 					title={{title: 'Model'}}
 					tintColor='#fff'
-					style={{borderColor: '#e80d2d'}}
-				/>
+					style={{borderColor: '#e80d2d'}} />
 				<View style={styles.helpTextContainer}>
 					<Text style={{marginLeft: 10}}>
 						Select the model of your vehicle
@@ -51,8 +49,7 @@ class Model extends Component {
 				<List containerStyle={{flex: 1, marginTop: 0}}>
 					<ListView 
 						renderRow={model => this.renderRow(model)}
-						dataSource={this.state.dataSource}
-					/>
+						dataSource={this.state.dataSource} />
 				</List>
 			</View>
 		)

@@ -9,22 +9,19 @@ export default function Splash (props) {
 	return (
 		<Image 
 			style={styles.container}
-			source={require('../../images/splash.jpg')}
-		>
+			source={require('../../images/splash.jpg')}>
 			<View style={styles.imageContainer}>
 				<Image
 					style={styles.image}
-					source={require('../../images/logo.png')}
-				>	
+					source={require('../../images/logo.png')}>	
 				</Image>
 			</View>
 			<View style={styles.buttonContainer}>
 				<Button 
 					title='CONTINUE' 
-					buttonStyle={{marginBottom: 30, backgroundColor: '#e74c3c', width: 380}}
+					buttonStyle={styles.button}
 					large
-					onPress={props.changeScene}
-				/>	
+					onPress={props.changeScene}/>	
 			</View>
 		</Image>
 	)
@@ -52,5 +49,11 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		flex: 1,
 		justifyContent: 'flex-end'
+	},
+	button: {
+		borderRadius: 5,
+		marginBottom: 30, 
+		backgroundColor: '#ff1148', 
+		width: 380
 	}
 })

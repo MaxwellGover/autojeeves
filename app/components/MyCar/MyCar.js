@@ -10,12 +10,11 @@ export default function MyCar (props) {
 		navigator: PropTypes.object.navigator,
 		goToSchedule: PropTypes.func.isRequired
 	}
-	console.log(props)
 	return (
 		<Image style={styles.container} source={require('../../images/carSplash.png')}>
 		<Card title='My Car' containerStyle={styles.cardContainer}>
 			<View style={styles.imageContainer}>
-				<Image style={styles.image} source={require('../../images/races.png')}/>
+				<Image style={styles.image} source={require('../../images/tire.png')}/>
 			</View>
 			<View style={styles.carInfoContainer}>
 				<Text style={{fontSize: 28, alignText: 'center'}}>{props.year}</Text>
@@ -25,9 +24,8 @@ export default function MyCar (props) {
 			<View style={styles.buttonContainer}>
 				<Button 
 					title='VIEW MAINTENANCE SCHEDULE'
-					buttonStyle={{borderRadius: 5, padding: 20, backgroundColor: '#ff1148'}}
-					onPress={() => props.goToSchedule()}
-				/>
+					buttonStyle={styles.button}
+					onPress={() => props.goToSchedule()} />
 			</View>
 		</Card>
 		</Image>
@@ -59,6 +57,12 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		resizeMode: 'contain',
-		height: 200
+		height: 150,
+		marginTop: 20
+	},
+	button: {
+		borderRadius: 5, 
+		padding: 20, 
+		backgroundColor: '#ff1148'
 	}
 })

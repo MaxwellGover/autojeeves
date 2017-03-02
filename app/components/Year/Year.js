@@ -35,14 +35,12 @@ class Year extends Component {
 		) 
 	}
 	render () {
-		console.log(this.props.userCarModel)
 		return (
 			<View style={{flex: 1}}>
 				<NavigationBar 
 					title={{title: 'Year'}}
 					tintColor='#fff'
-					style={{borderColor: '#e80d2d'}}
-				/>
+					style={{borderColor: '#e80d2d'}}/>
 				<View style={styles.helpTextContainer}>
 					<Text style={{marginLeft: 10}}>
 						Select the year of your vehicle
@@ -51,8 +49,7 @@ class Year extends Component {
 				<List containerStyle={{flex: 1, marginTop: 0}}>
 					<ListView 
 						renderRow={model => this.renderRow(model)}
-						dataSource={this.state.dataSource}
-					/>
+						dataSource={this.state.dataSource}/>
 				</List>
 			</View>
 		)

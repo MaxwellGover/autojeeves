@@ -9,7 +9,7 @@ class AppContainer extends Component {
 		dispatch: PropTypes.func.isRequired
 	}
 	componentDidMount () {
-		this.props.dispatch(getMakeData())
+		// this.props.dispatch(getMakeData())
 	}
 	render () {
 		return (

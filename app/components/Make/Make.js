@@ -5,19 +5,6 @@ import { List, ListItem } from 'react-native-elements'
 import NavigationBar from 'react-native-navbar'
 import { storeUserCar } from '~/redux/modules/data'
 
-/*
-const list = [
-  {
-  	id: 1,
-    name: 'Audi'
-  },
-  {
-  	id: 2,
-    name: 'Buick'
-  }
-];
-*/
-
 class Make extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
@@ -48,14 +35,12 @@ class Make extends Component {
 		) 
 	}
 	render () {
-		console.log(this.props.makeData)
 		return (
 			<View style={{flex: 1}}>
 				<NavigationBar 
 					title={{title: 'Make'}}
 					tintColor='#fff'
-					style={{borderColor: '#e80d2d'}}
-				/>
+					style={{borderColor: '#e80d2d'}} />
 				<View style={styles.helpTextContainer}>
 					<Text style={{marginLeft: 10}}>
 						Select the make of your vehicle
@@ -64,8 +49,7 @@ class Make extends Component {
 				<List containerStyle={{flex: 1, marginTop: 0}}>
 					<ListView 
 						renderRow={car => this.renderRow(car)}
-						dataSource={this.state.dataSource}
-					/>
+						dataSource={this.state.dataSource} />
 				</List>
 			</View>
 		)

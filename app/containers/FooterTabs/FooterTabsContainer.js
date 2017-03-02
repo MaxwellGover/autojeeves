@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react'
-import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { FooterTabs } from '~/components'
 import { setFooterTab } from '~/redux/modules/activeFooterTab'
@@ -11,7 +10,6 @@ class FooterTabsContainer extends Component {
 		activeFooterTab: PropTypes.string.isRequired
 	}
 	render () {
-		console.log('FooterTabContainers props are', this.props)
 		return (
 			<FooterTabs 
 				activeFooterTab={this.props.activeFooterTab}

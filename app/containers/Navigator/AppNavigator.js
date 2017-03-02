@@ -14,14 +14,17 @@ export default class AppNavigator extends Component {
 			return <Model navigator={navigator} />
 		} else if (route.year === true) {
 			return <Year navigator={navigator} />
-		} else if (route.myCar === true) {
-			return <MyCarContainer navigator={navigator}/>
 		} else if (this.props.myCar === true) {
+			return <MyCarContainer navigator={navigator}/>
+		} else if (route.schedule === true) {
 			return <FooterTabsContainer navigator={navigator} />
 		}
 		return <SplashContainer navigator={navigator} />
 	}
 	configureScene = (route) => {
+		if (route.model === true || route.year === true || route.schedule === true) {
+			return Navigator.SceneConfigs.PushFromRight
+		}
 		return Navigator.SceneConfigs.FloatFromBottom
 	}
 	render () {
