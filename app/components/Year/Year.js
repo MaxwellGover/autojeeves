@@ -20,8 +20,9 @@ class Year extends Component {
 	}
 	renderRow = (year) => { 
 		return (
-			<Text
+			<ListItem
 				key={year.id} 
+				title={<Text>{year.year}</Text>}
 				onPress={() => {
 						this.props.dispatch(storeUserYear(year))
 						this.props.dispatch(getSchedule(year.id))
@@ -30,7 +31,7 @@ class Year extends Component {
 						})
 					}
 				}
-			>{year.year}</Text>
+			/>
 		) 
 	}
 	render () {

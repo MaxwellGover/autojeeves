@@ -10,6 +10,11 @@ class MyCarContainer extends Component {
 		model: PropTypes.string.isRequired,
 		year: PropTypes.number.isRequired
 	}
+	goToSchedule = () => {
+		this.props.navigator.push({
+			schedule: true
+		})
+	}
 	render () {
 		console.log(this.props)
 		return (
@@ -17,6 +22,7 @@ class MyCarContainer extends Component {
 				make={this.props.make}
 				model={this.props.model}
 				year={this.props.year}
+				goToSchedule={this.goToSchedule}
 			/>
 		)
 	}

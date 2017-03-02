@@ -3,6 +3,7 @@ const STORE_USER_CAR = 'STORE_USER_CAR'
 const STORE_USER_MODEL = 'STORE_USER_MODEL'
 const STORE_USER_YEAR = 'STORE_USER_YEAR'
 const STORE_SCHEDULE = 'STORE_SCHEDULE'
+const CLEAR_DATA = 'CLEAR_DATA'
 
 const initialState = {
 	makeData: [],
@@ -10,6 +11,12 @@ const initialState = {
 	userCarModel: {},
 	userCarYear: {},
 	schedule: []
+}
+
+export function clearData () {
+	return {
+		type: CLEAR_DATA
+	}
 }
 
 export function storeMakeData (data) {
@@ -98,6 +105,14 @@ export default function data (state = initialState, action) {
 			return {
 				...state,
 				schedule: action.schedule
+			}
+		case CLEAR_DATA : 
+			return {
+				makeData: [],
+				userCarMake: {},
+				userCarModel: {},
+				userCarYear: {},
+				schedule: []
 			}
 		default : 
 			return state

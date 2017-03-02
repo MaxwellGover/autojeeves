@@ -1,53 +1,64 @@
 import React, { PropTypes, Component } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button, Card } from 'react-native-elements'
 
 export default function MyCar (props) {
 	MyCar.propTypes = {
 		make: PropTypes.string.isRequired,
 		model: PropTypes.string.isRequired,
-		year: PropTypes.number.isRequired
+		year: PropTypes.number.isRequired,
+		navigator: PropTypes.object.navigator,
+		goToSchedule: PropTypes.func.isRequired
 	}
 	console.log(props)
 	return (
-		<View style={styles.container}>
-			<View style={{flex: 1}}>
-				<Image 
-					style={{}}
-					source={require('../../images/car.png')}
-				/>
+		<Image style={styles.container} source={require('../../images/carSplash.png')}>
+		<Card title='My Car' containerStyle={styles.cardContainer}>
+			<View style={styles.imageContainer}>
+				<Image style={styles.image} source={require('../../images/races.png')}/>
 			</View>
-			<View style={styles.textContainer}>
-				<Text style={styles.carText}>
-					You have selected a {props.year} {props.make} {props.model}.
-				</Text>
+			<View style={styles.carInfoContainer}>
+				<Text style={{fontSize: 28, alignText: 'center'}}>{props.year}</Text>
+				<Text style={{fontSize: 48, alignText: 'center'}}>{props.make}</Text>
+				<Text style={{fontSize: 48, alignText: 'center'}}>{props.model}</Text>
 			</View>
 			<View style={styles.buttonContainer}>
 				<Button 
-					title='VIEW MAINTENENCE SCHEDULE' 
-					buttonStyle={{marginBottom: 30, backgroundColor: '#e74c3c', width: 380}}
-					large
-				/>	
+					title='VIEW MAINTENANCE SCHEDULE'
+					buttonStyle={{borderRadius: 5, padding: 20, backgroundColor: '#ff1148'}}
+					onPress={() => props.goToSchedule()}
+				/>
 			</View>
-		</View>
+		</Card>
+		</Image>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'space-between',
+		resizeMode: 'cover',
+    	width: undefined,
+    	height: undefined,
+		justifyContent: 'center',
 		alignItems: 'center'
 	},
-	textContainer: {
-		flex: 1,
-		justifyContent: 'center'
+	cardContainer: {
+		borderRadius: 10, 
+		padding: 20,
+		justifyContent: 'space-between'
+	},
+	carInfoContainer: {
+		alignItems: 'center'
 	},
 	buttonContainer: {
-		flex: 1, 
-		justifyContent: 'center'
+		marginTop: 40
 	},
-	carText: {
-		fontSize: 24
+	imageContainer: {
+		alignSelf: 'center'
+	},
+	image: {
+		resizeMode: 'contain',
+		height: 200
 	}
 })
