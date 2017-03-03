@@ -44,7 +44,7 @@ class Mileage extends Component {
 		) 
 	}
 	render () {
-		console.log(this.props.navigator)
+		console.log(this.props.schedule)
 		return (
 			<View style={{flex: 1}}>
 				<NavigationBar 

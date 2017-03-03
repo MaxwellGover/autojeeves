@@ -4,9 +4,6 @@ import { SplashContainer, MyCarContainer, FooterTabsContainer } from '~/containe
 import { Make, Model, Year } from '~/components'
 
 export default class AppNavigator extends Component {
-	static defaultProps = {
-		myCar: true
-	}
 	renderScene = (route, navigator) => {
 		if (route.make === true) {
 			return <Make navigator={navigator}/>
@@ -14,7 +11,7 @@ export default class AppNavigator extends Component {
 			return <Model navigator={navigator} />
 		} else if (route.year === true) {
 			return <Year navigator={navigator} />
-		} else if (this.props.myCar === true) {
+		} else if (route.myCar === true) {
 			return <MyCarContainer navigator={navigator}/>
 		} else if (route.schedule === true) {
 			return <FooterTabsContainer navigator={navigator} />

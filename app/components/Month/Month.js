@@ -18,6 +18,9 @@ class Month extends Component {
 			dataSource: this.ds.cloneWithRows(this.props.schedule)
 		}
 	}
+	componentDidMount = () => {
+		this.props.schedule
+	}
 	chooseNewCar = () => {
 		this.props.dispatch(clearData())
 		this.props.navigator.push({
@@ -44,7 +47,7 @@ class Month extends Component {
 		) 
 	}
 	render () {
-		console.table(this.props.navigator)
+		console.log(this.props.schedule)
 		return (
 			<View style={{flex: 1}}>
 				<NavigationBar 

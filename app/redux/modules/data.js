@@ -10,13 +10,7 @@ const initialState = {
 	userCarMake: {},
 	userCarModel: {},
 	userCarYear: {},
-	schedule: []
-}
-
-export function clearData () {
-	return {
-		type: CLEAR_DATA
-	}
+	schedule: ''
 }
 
 export function storeMakeData (data) {
@@ -54,6 +48,12 @@ export function storeSchedule (schedule) {
 	}
 }
 
+export function clearData () {
+	return {
+		type: CLEAR_DATA
+	}
+}
+
 export function getMakeData () {
 	return function (dispatch, getState) {
 		console.log('Getting data...')
@@ -69,8 +69,6 @@ export function getMakeData () {
 
 export function getSchedule (id) {
 	return function (dispatch, getState) {
-		console.log(id)
-		console.log('Getting schedule...')
 		const endpoint = `https://api.edmunds.com/v1/api/maintenance/actionrepository/findbymodelyearid?modelyearid=${id}&fmt=json&api_key=rxmjqw6pxtyfh86ysq9g7a78`
 		fetch(endpoint)
 			.then(response => response.json())
@@ -108,11 +106,11 @@ export default function data (state = initialState, action) {
 			}
 		case CLEAR_DATA : 
 			return {
-				makeData: [],
+				...state,
 				userCarMake: {},
 				userCarModel: {},
 				userCarYear: {},
-				schedule: []
+				schedule: ''
 			}
 		default : 
 			return state

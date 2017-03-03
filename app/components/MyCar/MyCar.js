@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
 	image: {
 		resizeMode: 'contain',
 		height: 150,
-		marginTop: 20
+		marginTop: 20,
+		marginBottom: 40
 	},
 	button: {
 		borderRadius: 5, 
